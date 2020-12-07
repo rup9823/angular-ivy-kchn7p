@@ -7,6 +7,7 @@
       id="item"
       placeholder="Enter Item"
       formControlName="item"
+      required
     />
   </div>
   <div class="form-group">
@@ -17,6 +18,7 @@
       id="price"
       placeholder="Enter Price"
       formControlName="price"
+      required
     />
   </div>
   <div class="form-group">
@@ -27,10 +29,16 @@
       id="quantity"
       placeholder="Enter Quantity"
       formControlName="quantity"
+      required
     />
   </div>
   <div>
-    <button type="submit" class="btn btn-primary" (click)="addData()">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!addForm.valid"
+      (click)="addData()"
+    >
       Add
     </button>
     <button type="submit" class="btn btn-primary ml-5" (click)="editData()">

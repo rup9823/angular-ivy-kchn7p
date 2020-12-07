@@ -6,7 +6,12 @@ import {
   VERSION,
   ViewChildren
 } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators
+} from "@angular/forms";
 var orderId = 10000;
 @Component({
   selector: "my-app",
@@ -21,9 +26,9 @@ export class AppComponent implements OnInit {
   @ViewChildren("items") products: QueryList<ElementRef>;
   constructor(private formBuilder: FormBuilder) {
     this.addForm = formBuilder.group({
-      item: new FormControl(),
-      price: new FormControl(),
-      quantity: new FormControl()
+      item: ["", Validators.required],
+      price: ["", Validators.required],
+      quantity: ["", Validators.required]
     });
   }
 
@@ -44,6 +49,7 @@ export class AppComponent implements OnInit {
     console.log(this.items);
   }
   editData() {
+    if (!this.edit_order_id) return;
     let obj = this.items.find(x => x.orderId === this.edit_order_id);
     let index = this.items.indexOf(obj);
     let quantity = this.addForm.value.quantity;
