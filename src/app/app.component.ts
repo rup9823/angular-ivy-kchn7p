@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
       quantity: quantity,
       total: total
     });
+    this.addForm.reset();
     console.log(this.items);
   }
   editData() {
