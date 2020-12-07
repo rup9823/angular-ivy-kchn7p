@@ -64,5 +64,10 @@ export class AppComponent implements OnInit {
   }
   edit_id(items, i) {
     this.edit_order_id = i.orderId;
+    this.addForm.setValue({
+      item: i.itemName,
+      price: i.price,
+      quantity: i.quantity
+    });
   }
 }
