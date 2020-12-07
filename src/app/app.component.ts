@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
   addForm: FormGroup;
   items = new Array();
   edit_order_id: Number;
+  title = "Add an item";
   @ViewChildren("items") products: QueryList<ElementRef>;
   constructor(private formBuilder: FormBuilder) {
     this.addForm = formBuilder.group({
@@ -67,6 +68,8 @@ export class AppComponent implements OnInit {
     console.log(new_obj);
     this.items[index] = new_obj;
     console.log(this.items);
+    this.title = "Add an item";
+    this.addForm.reset();
   }
   edit_id(items, i) {
     this.edit_order_id = i.orderId;
@@ -75,5 +78,6 @@ export class AppComponent implements OnInit {
       price: i.price,
       quantity: i.quantity
     });
+    this.title = "Editing is going on";
   }
 }
