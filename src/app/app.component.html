@@ -1,0 +1,69 @@
+<form [formGroup]="addForm" class="m-5" id="form">
+  <div class="form-group">
+    <label for="Item">Item</label>
+    <input
+      type="text"
+      class="form-control"
+      id="item"
+      placeholder="Enter Item"
+      formControlName="item"
+    />
+  </div>
+  <div class="form-group">
+    <label for="Price">Price</label>
+    <input
+      type="number"
+      class="form-control"
+      id="price"
+      placeholder="Enter Price"
+      formControlName="price"
+    />
+  </div>
+  <div class="form-group">
+    <label for="Quantity">Quantity</label>
+    <input
+      type="number"
+      class="form-control"
+      id="quantity"
+      placeholder="Enter Quantity"
+      formControlName="quantity"
+    />
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" (click)="addData()">
+      Add
+    </button>
+    <button type="submit" class="btn btn-primary ml-5" (click)="editData()">
+      Edit
+    </button>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">OrderId</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Total</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of items" #items>
+      <td>{{product.date}}</td>
+      <td>{{product.orderId}}</td>
+      <td>{{product.itemName}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.total}}</td>
+      <td>
+        <button type="button" class= "btn btn-primary" (click)="edit_id(items, product)">
+          <a href="#form">Edit</a>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
